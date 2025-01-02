@@ -1,4 +1,18 @@
+import { useState, useEffect } from "react";
+
 export default function Home() {
+  const [randomPokemon, setRandomPokemon] = useState(null);
+
+  useEffect(() => {
+    const getRandomPokemon = () => {
+      const randomId = Math.floor(Math.random() * 1010) + 1;
+      setRandomPokemon(randomId);
+    };
+
+    // Zufälliges Pokémon setzen, wenn die Seite geladen wird
+    getRandomPokemon();
+  }, []);
+
   return (
     <div className="text-center py-10">
       <h1 className="text-4xl font-bold text-blue-600">
@@ -12,11 +26,15 @@ export default function Home() {
         Pokémon!
       </p>
       <div className="mt-6">
-        <img
-          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
-          alt="Pikachu"
-          className="mx-auto w-40 h-40"
-        />
+        {randomPokemon ? (
+          <img
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${randomPokemon}.png`}
+            alt={`Pokemon ${randomPokemon}`}
+            className="mx-auto w-48 h-48"
+          />
+        ) : (
+          <p>Loading...</p>
+        )}
       </div>
     </div>
   );
