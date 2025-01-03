@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchPokemonByGeneration } from "../api/pokeApi";
+import { Link } from "react-router-dom";
 
 function List() {
   const [generation, setGeneration] = useState(1);
@@ -25,6 +26,7 @@ function List() {
     }
     getPokemon();
   }, [generation]);
+
   return (
     <div>
       <h1 className="text-center text-3xl font-bold my-6">
@@ -51,15 +53,20 @@ function List() {
       {/* Pokémon-Liste mit Bildern und Namen */}
       <ul className="flex flex-wrap gap-4 justify-center list-none p-0">
         {pokemon.map((poke) => (
-          <li key={poke.id} className="flex flex-col items-center m-4">
-            <img
-              src={poke.sprites.front_default}
-              alt={poke.name}
-              className="w-36 h-36"
-            />
-            <span className="text-lg font-semibold capitalize">
-              {poke.name}
-            </span>
+          <li
+            key={poke.id}
+            className="text-center flex flex-col items-center m-4"
+          >
+            <Link to={`/pokemon/${poke.id}`}>
+              <img
+                src={poke.sprites.front_default}
+                alt={poke.name}
+                className="w-36 h-36"
+              />
+              <span className="text-lg font-semibold capitalize">
+                {poke.name}
+              </span>
+            </Link>
           </li>
         ))}
       </ul>

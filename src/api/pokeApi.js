@@ -22,3 +22,18 @@ export async function fetchPokemonByGeneration(gen) {
   const data = await response.json();
   return data;
 }
+
+// Funktion zum Abrufen von Pokémon-Details per Id
+export async function fetchPokemonDetails(id) {
+  if (!id) {
+    throw new Error("Eine Pokémon-ID muss angegeben werden!");
+  }
+
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+  if (!response.ok) {
+    throw new Error("Fehler beim Laden der Pokémon-Daten!");
+  }
+
+  const data = await response.json();
+  return data;
+}

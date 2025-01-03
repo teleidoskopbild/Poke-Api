@@ -10,7 +10,7 @@ export default function Navbar() {
           </Link>
         </li>
         <li>
-          <Link to="/movies" className="hover:underline">
+          <Link to="/pokemon" className="hover:underline">
             Pokémon-List
           </Link>
         </li>
