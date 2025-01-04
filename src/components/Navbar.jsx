@@ -14,6 +14,11 @@ export default function Navbar() {
             Pokémon-List
           </Link>
         </li>
+        <li>
+          <Link to="/quiz" className="hover:underline">
+            Quiz
+          </Link>
+        </li>
       </ul>
     </nav>
   );

@@ -37,3 +37,28 @@ export async function fetchPokemonDetails(id) {
   const data = await response.json();
   return data;
 }
+
+// Quiz-Data
+
+export const fetchPokemonQuizData = async (ids, correctId) => {
+  const fetchData = async (id) => {
+    try {
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+      const data = await response.json();
+      return {
+        name: data.name,
+        image:
+          id === correctId
+            ? data.sprites.other["official-artwork"].front_default
+            : null, // Nur für die richtige Antwort das Bild holen
+      };
+    } catch (error) {
+      console.error("Error fetching Pokémon data:", error);
+      return null;
+    }
+  };
+
+  const promises = ids.map(fetchData); // Hole die Daten für alle IDs
+
+  return Promise.all(promises);
+};
