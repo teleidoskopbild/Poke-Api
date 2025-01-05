@@ -55,16 +55,16 @@ function List() {
         {pokemon.map((poke) => (
           <li
             key={poke.id}
-            className="text-center flex flex-col items-center m-4"
+            className="text-center flex flex-col items-center m-6"
           >
             <Link to={`/pokemon/${poke.id}`}>
               <img
-                src={poke.sprites.front_default}
+                src={poke.sprites.other["official-artwork"].front_default}
                 alt={poke.name}
                 className="w-36 h-36"
               />
               <span className="text-lg font-semibold capitalize">
-                {poke.name}
+                #{poke.id.toString().padStart(3, "0")} {poke.name}
               </span>
             </Link>
           </li>

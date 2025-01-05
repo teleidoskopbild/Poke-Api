@@ -23,7 +23,7 @@ export default function Home() {
       </p>
       <p className="mt-2 text-lg text-gray-500">
         Click on the Pokémon-List link to get started and view your favorite
-        Pokémon!
+        Pokémon or play a Quiz!
       </p>
       <div className="mt-6">
         {randomPokemon ? (
